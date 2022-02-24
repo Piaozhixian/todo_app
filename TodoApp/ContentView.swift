@@ -33,6 +33,12 @@ struct ContentView: View {
                         Text("+").font(.title)
                     }
                 }
+                Button(action: {
+                    DeleteAllTasks()
+                }) {
+                    Text("Delete All Tasks")
+                        .foregroundColor(.red)
+                }
             }
             .navigationBarTitle(Text("Tasks"))
             .navigationBarItems(trailing: Button(action: {
@@ -48,6 +54,10 @@ struct ContentView: View {
     func DeleteTask() {
         let necessaryTask = self.userData.tasks.filter({!$0.checked})
         self.userData.tasks = necessaryTask
+    }
+
+    func DeleteAllTasks() {
+        self.userData.tasks = []
     }
 }
 
