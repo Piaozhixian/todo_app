@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userData: UserData
+    @State private var showAlert = false
+
     var body: some View {
         NavigationView {
             List {
@@ -33,12 +35,23 @@ struct ContentView: View {
                         Text("+").font(.title)
                     }
                 }
-                Button(action: {
-                    DeleteAllTasks()
-                }) {
-                    Text("Delete All Tasks")
-                        .foregroundColor(.red)
+                Button("Delete all tasks") {
+                    showAlert = true
                 }
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Unable to Save Workout Data"),
+                        message: Text("The connection to the server was lost."),
+                        primaryButton: .default(
+                            Text("Cancel")
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Delete"),
+                            action: DeleteTask
+                        )
+                    )
+                }
+                
             }
             .navigationBarTitle(Text("Tasks"))
             .navigationBarItems(trailing: Button(action: {
