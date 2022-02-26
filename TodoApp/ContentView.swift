@@ -40,13 +40,12 @@ struct ContentView: View {
                 }
                 .alert(isPresented: $showAlert) {
                     Alert(
-                        title: Text("Unable to Save Workout Data"),
-                        message: Text("The connection to the server was lost."),
-                        primaryButton: .default(
-                            Text("Cancel")
+                        title: Text("全部のタスクを削除しますか？"),
+                        primaryButton: .cancel(
+                            Text("キャンセル")
                         ),
                         secondaryButton: .destructive(
-                            Text("Delete"),
+                            Text("削除"),
                             action: DeleteTask
                         )
                     )
