@@ -12,55 +12,63 @@ struct ContentView: View {
     @State private var showAlert = false
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(userData.tasks) {task in
-                    Button(action: {
-                        guard let index = self.userData.tasks.firstIndex(of: task) else {
-                            return
+        ZStack {
+            NavigationView {
+                List {
+                    ForEach(userData.tasks) {task in
+                        Button(action: {
+                            guard let index = self.userData.tasks.firstIndex(of: task) else {
+                                return
+                            }
+                            self.userData.tasks[index].checked.toggle()
+                        })
+                        {
+                            ListRow(task: task.title, isCheck: task.checked)
                         }
-                        self.userData.tasks[index].checked.toggle()
-                    })
-                    {
-                        ListRow(task: task.title, isCheck: task.checked)
                     }
-                }
-                if self.userData.isEditing {
-                    Draft()
-                } else {
-                    Button(action: {
-                        self.userData.isEditing = true
-                    })
-                    {
-                        Text("+").font(.title)
+                    if self.userData.isEditing {
+                        Draft()
+                    } else {
+                        Button(action: {
+                            self.userData.isEditing = true
+                        })
+                        {
+                            Text("+").font(.title)
+                        }
                     }
-                }
-                Button("Delete all tasks") {
-                    showAlert = true
-                }
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("全部のタスクを削除しますか？"),
-                        primaryButton: .cancel(
-                            Text("キャンセル")
-                        ),
-                        secondaryButton: .destructive(
-                            Text("削除"),
-                            action: DeleteTask
+                    Button("Delete all tasks") {
+                        showAlert = true
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("全部のタスクを削除しますか？"),
+                            primaryButton: .cancel(
+                                Text("キャンセル")
+                            ),
+                            secondaryButton: .destructive(
+                                Text("削除"),
+                                action: DeleteTask
+                            )
                         )
-                    )
+                    }
+                    
                 }
-                
+                .navigationBarTitle(Text("Tasks"))
+                .navigationBarItems(trailing: Button(action: {
+                    DeleteTask()
+                })
+                {
+                    Text("Delete")
+                }
+                )
+                            
             }
-            .navigationBarTitle(Text("Tasks"))
-            .navigationBarItems(trailing: Button(action: {
-                DeleteTask()
-            })
-            {
-                Text("Delete")
-            }
-            )
+            
+            FloatingButton()
         }
+
+        
+
     }
     
     func DeleteTask() {
