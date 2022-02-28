@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct FloatingButton: View {
+    @EnvironmentObject var userData: UserData
+
     var body: some View {
         VStack {  // --- 1
             Spacer()
             HStack { // --- 2
                 Spacer()
                 Button(action: {
-                    print("Tapped!!") // --- 3
+                    self.userData.showAddTaskAlert.toggle()
                 }, label: {
                     Image(systemName: "pencil")
                         .foregroundColor(.white)

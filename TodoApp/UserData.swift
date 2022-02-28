@@ -15,4 +15,5 @@ class UserData: ObservableObject {
     ]
     
     @Published var isEditing: Bool = false
+    @Published var showAddTaskAlert: Bool = false
 }

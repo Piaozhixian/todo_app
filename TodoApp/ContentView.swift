@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ContentView: View {
     @EnvironmentObject var userData: UserData
-    @State private var showAlert = false
 
+    @State private var showAlert = false
+    
     var body: some View {
         ZStack {
             NavigationView {
@@ -52,6 +54,10 @@ struct ContentView: View {
                         )
                     }
                     
+                    if self.userData.showAddTaskAlert {
+                        AddTaskAlert()
+                    }
+                    
                 }
                 .navigationBarTitle(Text("Tasks"))
                 .navigationBarItems(trailing: Button(action: {
@@ -65,6 +71,7 @@ struct ContentView: View {
             }
             
             FloatingButton()
+            
         }
 
         
