@@ -14,6 +14,5 @@ class UserData: ObservableObject {
         Task(title: "筋トレ", checked: true),
     ]
     
-    @Published var isEditing: Bool = false
     @Published var showAddTaskAlert: Bool = false
 }

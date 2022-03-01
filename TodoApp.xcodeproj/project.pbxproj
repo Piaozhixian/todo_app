@@ -17,7 +17,6 @@
 		D9E274F127BBD06A00BC3467 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E274F027BBD06A00BC3467 /* ListRow.swift */; };
 		D9E274F327BE148700BC3467 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E274F227BE148700BC3467 /* UserData.swift */; };
 		D9E274F527BE153B00BC3467 /* UserTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E274F427BE153B00BC3467 /* UserTask.swift */; };
-		D9E274F727C109FF00BC3467 /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E274F627C109FF00BC3467 /* Draft.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		D9E274F027BBD06A00BC3467 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		D9E274F227BE148700BC3467 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		D9E274F427BE153B00BC3467 /* UserTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTask.swift; sourceTree = "<group>"; };
-		D9E274F627C109FF00BC3467 /* Draft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
 		F0D3E5E6A66138A2543F5586 /* Pods-TodoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp.release.xcconfig"; path = "Target Support Files/Pods-TodoApp/Pods-TodoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +87,6 @@
 			children = (
 				D9E274E227BA7D5B00BC3467 /* TodoApp.swift */,
 				D9E274E427BA7D5B00BC3467 /* ContentView.swift */,
-				D9E274F627C109FF00BC3467 /* Draft.swift */,
 				D9D8491727CBA9C900C7047A /* AddBtn.swift */,
 				D9E274F427BE153B00BC3467 /* UserTask.swift */,
 				D9E274F227BE148700BC3467 /* UserData.swift */,
@@ -227,7 +224,6 @@
 				D9D8491A27CCF8F900C7047A /* AddTaskAlert.swift in Sources */,
 				D9E274E527BA7D5B00BC3467 /* ContentView.swift in Sources */,
 				D9E274E327BA7D5B00BC3467 /* TodoApp.swift in Sources */,
-				D9E274F727C109FF00BC3467 /* Draft.swift in Sources */,
 				D9E274F327BE148700BC3467 /* UserData.swift in Sources */,
 				D9D8491827CBA9C900C7047A /* AddBtn.swift in Sources */,
 				D9E274F127BBD06A00BC3467 /* ListRow.swift in Sources */,

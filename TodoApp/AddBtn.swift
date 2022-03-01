@@ -18,7 +18,7 @@ struct FloatingButton: View {
                 Button(action: {
                     self.userData.showAddTaskAlert.toggle()
                 }, label: {
-                    Image(systemName: "pencil")
+                    Image(systemName: "plus")
                         .foregroundColor(.white)
                         .font(.system(size: 24)) // --- 4
                 })

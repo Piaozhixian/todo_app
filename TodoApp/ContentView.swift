@@ -28,16 +28,7 @@ struct ContentView: View {
                             ListRow(task: task.title, isCheck: task.checked)
                         }
                     }
-                    if self.userData.isEditing {
-                        Draft()
-                    } else {
-                        Button(action: {
-                            self.userData.isEditing = true
-                        })
-                        {
-                            Text("+").font(.title)
-                        }
-                    }
+                   
                     Button("Delete all tasks") {
                         showAlert = true
                     }
