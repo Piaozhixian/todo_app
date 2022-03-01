@@ -9,24 +9,30 @@ import SwiftUI
 
 struct AddTaskAlert: View {
     @EnvironmentObject var userData: UserData
-    @State var text = ""
+    @State var taskTitle = ""
+
     var body: some View {
         ZStack() {
             Rectangle()
                 .foregroundColor(.white)
             VStack {
-                Text("アラート")
-                TextField("テキスト",text: $text)
+                TextField("テキスト",text: $taskTitle)
                 HStack {
-                    Button("OK") {
+                    Button("追加") {
+                        createTask()
                         self.userData.showAddTaskAlert.toggle()
                     }
                 }
             }.padding()
+        }
+        .frame(width: 300, height: 180,alignment: .center)
+        .cornerRadius(20).shadow(radius: 20)
     }
-                .frame(width: 300, height: 180,alignment: .center)
-                .cornerRadius(20).shadow(radius: 20)
-        
+    
+    func createTask() {
+        let newTask = Task(title: self.taskTitle, checked: false)
+        self.userData.tasks.insert(newTask, at: 0)
+        self.taskTitle = ""
     }
 }
 

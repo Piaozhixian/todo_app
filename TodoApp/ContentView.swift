@@ -54,9 +54,7 @@ struct ContentView: View {
                         )
                     }
                     
-                    if self.userData.showAddTaskAlert {
-                        AddTaskAlert()
-                    }
+                    
                     
                 }
                 .navigationBarTitle(Text("Tasks"))
@@ -69,7 +67,9 @@ struct ContentView: View {
                 )
                             
             }
-            
+            if self.userData.showAddTaskAlert {
+                AddTaskAlert()
+            }
             FloatingButton()
             
         }
