@@ -8,9 +8,10 @@
 import SwiftUI
 import RealmSwift
 
-struct ContentView: View {
+struct RealmContentView: View {
     @EnvironmentObject var userData: UserData
-    @StateObject var realManager = RealmManager()
+    @
+
     @State private var showAlert = false
     
     var body: some View {
@@ -26,7 +27,6 @@ struct ContentView: View {
                         })
                         {
                             ListRow(task: task.title, isCheck: task.checked)
-                                .environmentObject(RealmManager())
                         }
                     }
                    
@@ -61,7 +61,6 @@ struct ContentView: View {
             }
             if self.userData.showAddTaskAlert {
                 AddTaskAlert()
-                    .environmentObject(RealmManager())
             }
             FloatingButton()
             
@@ -85,6 +84,5 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(UserData())
-            .environmentObject(RealmTask())
     }
 }

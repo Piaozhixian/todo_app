@@ -10,6 +10,8 @@
 		CB807FC91D19DE78904083DA /* Pods_TodoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C828A2D8AD704C367C1FB0 /* Pods_TodoApp.framework */; };
 		D9D8491827CBA9C900C7047A /* AddBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D8491727CBA9C900C7047A /* AddBtn.swift */; };
 		D9D8491A27CCF8F900C7047A /* AddTaskAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D8491927CCF8F900C7047A /* AddTaskAlert.swift */; };
+		D9D8491C27CEFB0300C7047A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D8491B27CEFB0300C7047A /* RealmManager.swift */; };
+		D9D8491E27CEFDD900C7047A /* RealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D8491D27CEFDD900C7047A /* RealmTask.swift */; };
 		D9E274E327BA7D5B00BC3467 /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E274E227BA7D5B00BC3467 /* TodoApp.swift */; };
 		D9E274E527BA7D5B00BC3467 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E274E427BA7D5B00BC3467 /* ContentView.swift */; };
 		D9E274E727BA7D5D00BC3467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E274E627BA7D5D00BC3467 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		9D18D4594BF044FD1C5FE899 /* Pods-TodoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoApp/Pods-TodoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D8491727CBA9C900C7047A /* AddBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBtn.swift; sourceTree = "<group>"; };
 		D9D8491927CCF8F900C7047A /* AddTaskAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlert.swift; sourceTree = "<group>"; };
+		D9D8491B27CEFB0300C7047A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		D9D8491D27CEFDD900C7047A /* RealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTask.swift; sourceTree = "<group>"; };
 		D9E274DF27BA7D5B00BC3467 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E274E227BA7D5B00BC3467 /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		D9E274E427BA7D5B00BC3467 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				D9E274F027BBD06A00BC3467 /* ListRow.swift */,
 				D9E274E627BA7D5D00BC3467 /* Assets.xcassets */,
 				D9E274E827BA7D5D00BC3467 /* Preview Content */,
+				D9D8491B27CEFB0300C7047A /* RealmManager.swift */,
+				D9D8491D27CEFDD900C7047A /* RealmTask.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -221,12 +227,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E274F527BE153B00BC3467 /* UserTask.swift in Sources */,
+				D9D8491C27CEFB0300C7047A /* RealmManager.swift in Sources */,
 				D9D8491A27CCF8F900C7047A /* AddTaskAlert.swift in Sources */,
 				D9E274E527BA7D5B00BC3467 /* ContentView.swift in Sources */,
 				D9E274E327BA7D5B00BC3467 /* TodoApp.swift in Sources */,
 				D9E274F327BE148700BC3467 /* UserData.swift in Sources */,
 				D9D8491827CBA9C900C7047A /* AddBtn.swift in Sources */,
 				D9E274F127BBD06A00BC3467 /* ListRow.swift in Sources */,
+				D9D8491E27CEFDD900C7047A /* RealmTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
