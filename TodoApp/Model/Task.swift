@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmTask: Object, ObjectKeyIdentifiable {
+class Task: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title = ""
     @Persisted var completed = false

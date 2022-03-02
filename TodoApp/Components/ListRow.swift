@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ListRow: View {
-    @EnvironmentObject var realmManager: RealmManager
 
     let task: String
     var isCheck: Bool

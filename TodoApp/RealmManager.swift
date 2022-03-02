@@ -10,7 +10,7 @@ import RealmSwift
 
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
-    @Published private(set) var tasks: [RealmTask] = []
+    @Published private(set) var tasks: [Task] = []
     
     init() {
         openRealm()
@@ -29,10 +29,12 @@ class RealmManager: ObservableObject {
     }
     
     func addTask(taskTitle: String) {
+        print("click")
+
         if let localRealm = localRealm {
             do {
                 try localRealm.write {
-                    let newTask = RealmTask(value: ["title": taskTitle, "completed": false])
+                    let newTask = Task(value: ["title": taskTitle, "completed": false])
                     localRealm.add(newTask)
                     print("Added new task to Realm: \(newTask)")
                 }
@@ -44,7 +46,7 @@ class RealmManager: ObservableObject {
     
     func getTasks() {
         if let localRealm = localRealm {
-            let allTasks = localRealm.objects(RealmTask.self).sorted(byKeyPath: "completed")
+            let allTasks = localRealm.objects(Task.self).sorted(byKeyPath: "completed")
             tasks = []
             allTasks.forEach { task in
                 tasks.append(task)
@@ -56,7 +58,7 @@ class RealmManager: ObservableObject {
     func updateTask(id: ObjectId, completed: Bool) {
         if let localRealm = localRealm {
             do {
-                let taskToUpdate = localRealm.objects(RealmTask.self).filter(NSPredicate(format: "id == %@", id))
+                let taskToUpdate = localRealm.objects(Task.self).filter(NSPredicate(format: "id == %@", id))
                 guard !taskToUpdate.isEmpty else { return }
                 
                 try localRealm.write {
@@ -73,7 +75,7 @@ class RealmManager: ObservableObject {
     func deleteTask(id: ObjectId) {
         if let localRealm = localRealm {
             do {
-                let taskToDelete = localRealm.objects(RealmTask.self).filter(NSPredicate(format: "id == %@", id))
+                let taskToDelete = localRealm.objects(Task.self).filter(NSPredicate(format: "id == %@", id))
                 guard !taskToDelete.isEmpty else { return }
 
                 try localRealm.write {

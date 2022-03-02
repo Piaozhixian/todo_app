@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddTaskAlert: View {
-    @EnvironmentObject var userData: UserData
     @EnvironmentObject var realmManager: RealmManager
     
     @State var taskTitle = ""
@@ -32,9 +31,6 @@ struct AddTaskAlert: View {
     }
     
     func createTask() {
-        let newTask = Task(title: self.taskTitle, checked: false)
-        self.userData.tasks.insert(newTask, at: 0)
-        
         realmManager.addTask(taskTitle: self.taskTitle)
         self.taskTitle = ""
         realmManager.getTasks()
