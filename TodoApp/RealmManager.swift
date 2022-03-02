@@ -14,6 +14,7 @@ class RealmManager: ObservableObject {
     
     init() {
         openRealm()
+        getTasks()
     }
     
     func openRealm() {
@@ -29,13 +30,14 @@ class RealmManager: ObservableObject {
     }
     
     func addTask(taskTitle: String) {
-        print("click")
-
+        
         if let localRealm = localRealm {
             do {
                 try localRealm.write {
                     let newTask = Task(value: ["title": taskTitle, "completed": false])
                     localRealm.add(newTask)
+                    getTasks()
+
                     print("Added new task to Realm: \(newTask)")
                 }
             } catch {
