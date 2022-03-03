@@ -19,6 +19,7 @@ struct TasksView: View {
                 ForEach(realmManager.tasks, id: \.id) {
                     task in
                     if !task.isInvalidated {
+                        
                         TaskRow(task: task.title, completed: task.completed)
                             .onTapGesture {
                                 realmManager.updateTask(id: task.id, completed: !task.completed)
