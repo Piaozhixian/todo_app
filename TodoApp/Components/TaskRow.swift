@@ -12,10 +12,13 @@ struct TaskRow: View {
     var completed: Bool
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack() {
             Image(systemName: completed ? "checkmark.circle" : "circle")
             Text(task)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .frame(maxWidth: .infinity)
+        
     }
 }
 
