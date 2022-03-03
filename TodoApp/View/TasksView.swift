@@ -21,8 +21,22 @@ struct TasksView: View {
             List {
                 ForEach(realmManager.tasks, id: \.id) {
                     task in
-                    TaskRow(task: task.title, completed: task.completed)
+                    if !task.isInvalidated {
+                        TaskRow(task: task.title, completed: task.completed)
+                            .onTapGesture {
+                                realmManager.updateTask(id: task.id, completed: !task.completed)
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    realmManager.deleteTask(id: task.id)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                    }
+                    
                 }
+                .listRowSeparator(.hidden)
             }
             .onAppear{
                 UITableView.appearance().backgroundColor = UIColor.clear
