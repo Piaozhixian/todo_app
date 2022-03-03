@@ -13,10 +13,7 @@ struct TasksView: View {
     
     var body: some View {
         VStack {
-            Text("My Tasks")
-                .font(.title3).bold()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+            AppInfo()
             
             List {
                 ForEach(realmManager.tasks, id: \.id) {
@@ -44,7 +41,6 @@ struct TasksView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(hue: 0.08, saturation: 0.14, brightness: 0.97))
         
     }
 }
