@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct AddListView: View {
+    @State private var title: String = ""
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("リストのタイトルを入力", text: $title)
+                .padding()
+                .navigationBarTitle("新しいリストを作成", displayMode: .inline)
+                .navigationBarItems(trailing: Text("完成"))
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image(systemName: "arrow.backward")
+                        })
+                    }
+                }
+
+            Divider()
+            Spacer()
+        }
     }
 }
 

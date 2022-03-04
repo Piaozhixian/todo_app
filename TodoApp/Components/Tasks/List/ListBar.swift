@@ -11,6 +11,7 @@ struct ListBar: View {
     var body: some View {
         HStack {
             ListNameTab(name: "My tasks")
+            Spacer()
             AddListTab()
         }
     }
