@@ -14,7 +14,6 @@ struct TasksView: View {
     var body: some View {
         NavigationView {
             VStack {
-                AppInfo()
                 ListBar()
                 Divider()
                 List {
@@ -44,7 +43,11 @@ struct TasksView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .navigationBarTitle(Text("ToDo List").font(.largeTitle), displayMode: .inline)
+            .navigationBarItems(trailing: Image(systemName: "person.circle").font(.title))
+            .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }
 }
