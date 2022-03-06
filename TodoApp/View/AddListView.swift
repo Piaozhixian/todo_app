@@ -10,17 +10,20 @@ import SwiftUI
 struct AddListView: View {
     @State private var title: String = ""
     @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var realmManager: RealmManager
+
     var body: some View {
         VStack {
             TextField("リストのタイトルを入力", text: $title)
                 .padding()
                 .navigationBarTitle("新しいリストを作成", displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                    dismiss()
+                    if title != "" {
+                        realmManager.addTaskList(title: title)
+                        dismiss()
+                    }
                 }, label: {
                     Text("完成")
-                    
                 }))
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
