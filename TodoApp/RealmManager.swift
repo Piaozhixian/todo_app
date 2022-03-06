@@ -11,7 +11,8 @@ import RealmSwift
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
     @Published private(set) var tasks: [Task] = []
-    
+    @Published private(set) var taskLists: [TaskList] = []
+
     init() {
         openRealm()
         getTasks()
@@ -90,4 +91,20 @@ class RealmManager: ObservableObject {
         }
     }
     
+    func addTaskList(title: String) {
+        
+        if let localRealm = localRealm {
+            do {
+                try localRealm.write {
+                    let newList = TaskList(value: ["title": title])
+                    localRealm.add(newList)
+                    getTasks()
+
+                    print("Added new list to Realm: \(newList)")
+                }
+            } catch {
+                print("Error adding list to Realm: \(error)")
+            }
+        }
+    }
 }
