@@ -16,7 +16,12 @@ struct AddListView: View {
             TextField("リストのタイトルを入力", text: $title)
                 .padding()
                 .navigationBarTitle("新しいリストを作成", displayMode: .inline)
-                .navigationBarItems(trailing: Text("完成"))
+                .navigationBarItems(trailing: Button(action: {
+                    dismiss()
+                }, label: {
+                    Text("完成")
+                    
+                }))
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
