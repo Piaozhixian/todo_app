@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ListBar: View {
+    @EnvironmentObject var realmManager: RealmManager
+    
     var body: some View {
         HStack {
-            ListNameTab(name: "My tasks")
-            Spacer()
+            ScrollView([.horizontal], showsIndicators: false) {
+                HStack {
+                    ListNameTab(name: "My tasks")
+                    ForEach(realmManager.taskLists, id: \.id) { taskList in
+                        ListNameTab(name: taskList.title)
+                    }
+                }
+            }
             AddListTab()
+
         }
+        
     }
 }
 

@@ -16,6 +16,7 @@ class RealmManager: ObservableObject {
     init() {
         openRealm()
         getTasks()
+        getTaskLists()
     }
     
     func openRealm() {
@@ -98,7 +99,7 @@ class RealmManager: ObservableObject {
                 try localRealm.write {
                     let newList = TaskList(value: ["title": title])
                     localRealm.add(newList)
-                    getTasks()
+                    getTaskLists()
 
                     print("Added new list to Realm: \(newList)")
                 }
@@ -107,4 +108,15 @@ class RealmManager: ObservableObject {
             }
         }
     }
+    
+    func getTaskLists() {
+        if let localRealm = localRealm {
+            let allTaskLists = localRealm.objects(TaskList.self)
+            taskLists = []
+            allTaskLists.forEach { taskList in
+                taskLists.append(taskList)
+            }
+        }
+    }
+    
 }

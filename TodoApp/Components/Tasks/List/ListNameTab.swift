@@ -11,6 +11,7 @@ struct ListNameTab: View {
     var name: String
     var body: some View {
         Text(name)
+            .frame(minWidth: 50)
     }
 }
 

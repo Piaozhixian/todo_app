@@ -15,6 +15,7 @@ struct TasksView: View {
         NavigationView {
             VStack {
                 ListBar()
+                    .frame(height: 35)
                 Divider()
                 List {
                     ForEach(realmManager.tasks, id: \.id) {
