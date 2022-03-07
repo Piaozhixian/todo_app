@@ -10,12 +10,14 @@ import RealmSwift
 
 struct TasksView: View {
     @EnvironmentObject var realmManager: RealmManager
-    
+    @EnvironmentObject var userData: UserData
+
     var body: some View {
         NavigationView {
             VStack {
                 ListBar()
                     .frame(height: 35)
+                    .environmentObject(UserData())
                 Divider()
                 List {
                     ForEach(realmManager.tasks, id: \.id) {
