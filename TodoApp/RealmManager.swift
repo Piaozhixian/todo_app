@@ -118,5 +118,14 @@ class RealmManager: ObservableObject {
             }
         }
     }
+
+    func getTaskListById(id: ObjectId) -> TaskList? {
+        if let localRealm = localRealm {
+            let results = localRealm.objects(TaskList.self).filter(NSPredicate(format: "id == %@", id))
+            guard !results.isEmpty else { return nil }
+            return results.first
+        }
+        return nil
+    }
     
 }

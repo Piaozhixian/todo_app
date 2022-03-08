@@ -19,8 +19,10 @@ struct ListBar: View {
                     ForEach(realmManager.taskLists, id: \.id) { taskList in
                         ListNameTab(name: taskList.title)
                             .onTapGesture {
-                                userData.selectedTaskListId = taskList.id.stringValue
-                                print("List ID: \(userData.selectedTaskListId)")
+                                userData.selectedTaskList = realmManager.getTaskListById(id: taskList.id)
+                                if let selectedTaskList = userData.selectedTaskList {
+                                    print(selectedTaskList)
+                                }
                             }
                     }
                 }

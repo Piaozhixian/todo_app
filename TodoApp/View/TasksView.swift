@@ -46,7 +46,7 @@ struct TasksView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationBarTitle(Text("ToDo List").font(.largeTitle), displayMode: .inline)
+            .navigationBarTitle(Text("ToDo List"), displayMode: .inline)
             .navigationBarItems(trailing: Image(systemName: "person.circle").font(.title))
             .padding()
         }

@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 class UserData: ObservableObject {
-    @Published var selectedTaskListId = ""
+    @Published var selectedTaskListId: ObjectId?
+    @Published var selectedTaskList: TaskList?
     
 }
