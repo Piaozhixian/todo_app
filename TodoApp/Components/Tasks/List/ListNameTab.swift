@@ -8,24 +8,34 @@
 import SwiftUI
 
 struct ListNameTab: View {
-    var name: String
-    var selected: Bool = false
+    var taskList: TaskList
+    var showUnderScore: Bool = false
+    @EnvironmentObject var userData: UserData
+
     var body: some View {
         VStack {
-            Text(name)
+            Text(taskList.title)
                 .frame(minWidth: 50)
+                .onTapGesture {
+                    self.setSelectedTaskList(taskList: taskList)
+                }
+            let color = showUnderScore ? Color.blue : Color.clear
             
-            let color = selected ? Color.blue : Color.clear
             RoundedRectangle(cornerRadius: 30)
                 .fill(color)
                 .frame(maxWidth: .infinity, maxHeight: 3)
         }
-        
+
+    }
+    
+    
+    func setSelectedTaskList(taskList: TaskList) {
+        userData.selectedTaskList = taskList
     }
 }
 
 struct ListNameTab_Previews: PreviewProvider {
     static var previews: some View {
-        ListNameTab(name: "My tasks", selected: true)
+        ListNameTab(taskList: TaskList())
     }
 }
