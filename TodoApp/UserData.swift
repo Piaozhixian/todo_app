@@ -9,7 +9,15 @@ import Foundation
 import RealmSwift
 
 class UserData: ObservableObject {
-    @Published var selectedTaskListId: ObjectId?
     @Published var selectedTaskList: TaskList?
-    
+    var realmManager = RealmManager()
+
+
+    init () {
+        if self.selectedTaskList == nil {
+            if !self.realmManager.taskLists.isEmpty {
+                self.selectedTaskList = self.realmManager.taskLists[0]
+            }
+        }
+    }
 }

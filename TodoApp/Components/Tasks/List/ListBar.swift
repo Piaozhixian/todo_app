@@ -16,7 +16,6 @@ struct ListBar: View {
         HStack {
             ScrollView([.horizontal], showsIndicators: false) {
                 HStack {
-                    ListNameTab(taskList: TaskList(value:  ["title": "myTask"]))
                     if let tmpTaskList = userData.selectedTaskList {
                         ForEach(realmManager.taskLists, id: \.id) { taskList in
                             if tmpTaskList.id == taskList.id {
@@ -25,16 +24,11 @@ struct ListBar: View {
                                 ListNameTab(taskList: taskList, showUnderScore: false)
                             }
                         }
-                    } else {
-                        ForEach(realmManager.taskLists, id: \.id) { taskList in
-                            ListNameTab(taskList: taskList, showUnderScore: false)
-                        }
                     }
                     
                 }
             }
             AddListTab()
-            
         }
         
     }

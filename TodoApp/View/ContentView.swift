@@ -10,12 +10,14 @@ import RealmSwift
 
 struct ContentView: View {
     @StateObject var realmManager = RealmManager()
+    @StateObject var userData = UserData()
     @State private var showAddTaskView = false
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             TasksView()
                 .environmentObject(realmManager)
+                .environmentObject(userData)
             
             SmallAddButton()
                 .padding()
@@ -29,8 +31,6 @@ struct ContentView: View {
                 .environmentObject(realmManager)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-        
-
     }
 }
 
