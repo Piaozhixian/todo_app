@@ -10,13 +10,22 @@ import SwiftUI
 struct SmallAddButton: View {
     var body: some View {
         ZStack {
-            Circle()
-                .frame(width: 50)
-                .foregroundColor(Color(hue: 0.328, saturation: 0.8, brightness: 0.4))
-            Text("+")
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(.white)
+            Button(action: {
+                // Do something
+            }) {
+                Image(systemName: "plus")
+                        .frame(width: 60, height: 60)
+                        .imageScale(.large)
+                        .background(Color.white)
+                        .foregroundColor(.blue)
+                        .overlay{
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(Color.gray, lineWidth: 1)
+
+                        }
+                        .font(.largeTitle)
+                        
+            }
         }
         .frame(height: 50)
     }
