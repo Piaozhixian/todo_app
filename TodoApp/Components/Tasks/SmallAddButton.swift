@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct SmallAddButton: View {
+    @State private var isShowingView: Bool = false
     var body: some View {
         ZStack {
             Button(action: {
                 // Do something
+                isShowingView.toggle()
             }) {
                 Image(systemName: "plus")
                         .frame(width: 60, height: 60)
                         .imageScale(.large)
-                        .background(Color.white)
-                        .foregroundColor(.blue)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color.gray, lineWidth: 1)
-
-                        }
-                        .font(.largeTitle)
-                        
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(
+                            Circle()
+                        )
+                        .font(.title)
             }
+            .sheet(isPresented: $isShowingView) {
+                AddTaskView()
+            }
+
         }
         .frame(height: 50)
     }
