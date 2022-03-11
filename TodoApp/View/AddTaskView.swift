@@ -9,12 +9,13 @@ import SwiftUI
 
 struct AddTaskView: View {
     @EnvironmentObject var realmManager: RealmManager
+    @EnvironmentObject var userData: UserData
     @State private var title: String = ""
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Create a new task")
+            Text(userData.selectedTaskList!.title)
                 .font(.title3).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
             TextField("Enter you task here",
@@ -38,7 +39,7 @@ struct AddTaskView: View {
         }
         .padding(.top, 40)
         .padding(.horizontal)
-        .background(Color(hue: 0.08, saturation: 0.14, brightness: 0.97))
+        .background(.white)
     }
 }
 

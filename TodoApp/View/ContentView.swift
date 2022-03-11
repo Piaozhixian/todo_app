@@ -24,12 +24,10 @@ struct ContentView: View {
                 .onTapGesture {
                     showAddTaskView.toggle()
                 }
-                     
-        }
-        .sheet(isPresented: $showAddTaskView) {
-            AddTaskView()
                 .environmentObject(realmManager)
+                .environmentObject(userData)
         }
+
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SmallAddButton: View {
+    @StateObject var realmManager = RealmManager()
+    @StateObject var userData = UserData()
     @State private var isShowingView: Bool = false
     var body: some View {
         ZStack {
@@ -27,6 +29,8 @@ struct SmallAddButton: View {
             }
             .sheet(isPresented: $isShowingView) {
                 AddTaskView()
+                    .environmentObject(realmManager)
+                    .environmentObject(userData)
             }
 
         }
