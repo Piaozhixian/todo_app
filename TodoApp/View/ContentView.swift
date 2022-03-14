@@ -21,15 +21,12 @@ struct ContentView: View {
             
             SmallAddButton()
                 .padding()
-                .onTapGesture {
-                    showAddTaskView.toggle()
-                }
                 .environmentObject(realmManager)
                 .environmentObject(userData)
         }
-
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -23,7 +23,7 @@ struct AddTaskView: View {
                 .textFieldStyle(.roundedBorder)
             Button {
                 if title != "" {
-                    realmManager.addTask(taskTitle: title)
+                    realmManager.addTask(taskTitle: title, taskList: userData.selectedTaskList!)
                 }
                 dismiss()
             } label: {

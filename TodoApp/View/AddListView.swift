@@ -11,6 +11,8 @@ struct AddListView: View {
     @State private var title: String = ""
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var realmManager: RealmManager
+    @EnvironmentObject var userData: UserData
+    @State private var enableAddTaskBtn = false
 
     var body: some View {
         VStack {
@@ -20,6 +22,9 @@ struct AddListView: View {
                 .navigationBarItems(trailing: Button(action: {
                     if title != "" {
                         realmManager.addTaskList(title: title)
+                        realmManager.getTaskLists()
+                        userData.selectedTaskList = realmManager.taskLists.last
+
                         dismiss()
                     }
                 }, label: {
@@ -38,6 +43,9 @@ struct AddListView: View {
 
             Divider()
             Spacer()
+        }
+        .onDisappear {
+            self.enableAddTaskBtn = userData.selectedTaskList != nil
         }
     }
 }

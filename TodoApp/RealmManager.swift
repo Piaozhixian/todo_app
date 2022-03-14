@@ -12,7 +12,7 @@ class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
     @Published private(set) var tasks: [Task] = []
     @Published private(set) var taskLists: [TaskList] = []
-
+    
     init() {
         openRealm()
         getTasks()
@@ -31,15 +31,15 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func addTask(taskTitle: String) {
+    func addTask(taskTitle: String, taskList: TaskList) {
         
         if let localRealm = localRealm {
             do {
                 try localRealm.write {
-                    let newTask = Task(value: ["title": taskTitle, "completed": false])
+                    let newTask = Task(value: ["title": taskTitle, "completed": false, "taskList": taskList])
                     localRealm.add(newTask)
                     getTasks()
-
+                    
                     print("Added new task to Realm: \(newTask)")
                 }
             } catch {
@@ -81,14 +81,14 @@ class RealmManager: ObservableObject {
             do {
                 let taskToDelete = localRealm.objects(Task.self).filter(NSPredicate(format: "id == %@", id))
                 guard !taskToDelete.isEmpty else { return }
-
+                
                 try localRealm.write {
                     localRealm.delete(taskToDelete)
                     getTasks()
                     print("Deleted task with id \(id)!")
                 }            } catch {
-                print("Error deleting task \(id) from Realm: \(error)")
-            }
+                    print("Error deleting task \(id) from Realm: \(error)")
+                }
         }
     }
     
@@ -100,7 +100,7 @@ class RealmManager: ObservableObject {
                     let newList = TaskList(value: ["title": title])
                     localRealm.add(newList)
                     getTaskLists()
-
+                    
                     print("Added new list to Realm: \(newList)")
                 }
             } catch {
@@ -118,7 +118,7 @@ class RealmManager: ObservableObject {
             }
         }
     }
-
+    
     func getTaskListById(id: ObjectId) -> TaskList? {
         if let localRealm = localRealm {
             let results = localRealm.objects(TaskList.self).filter(NSPredicate(format: "id == %@", id))
